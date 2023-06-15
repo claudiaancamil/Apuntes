@@ -1,0 +1,130 @@
+---Introduccion a bases de datos----
+SELECT* FROM  demo;
+
+SELECT id,name from demo;
+
+SELECT* FROM demo;
+
+/*Ejercicio: Consultando Campos*/
+SELECT NAME FROM demo;
+SELECT* FROM demo;
+
+Select id, name FROM demo;
+SELECT* FROM demo;
+
+/*Ejercicio: Consulta con condiciones*/
+SELECT* FROM demo 
+Where id>4;
+
+SELECT* FROM demo;
+
+/*Ejercicio: Consultas complejas*/
+SELECT* From demo 
+ORDER BY name DESC;
+
+SELECT* FROM demo;
+
+SELECT* from demo
+ORDER BY id DESC LIMIT 3;
+
+SELECT* FROM demo;
+
+---Insertando datos---
+INSERT INTO demo (name, HINT) 
+values ('Claudia', 'PISTA 1');
+
+SELECT* FROM demo;
+
+INSERT INTO demo (NAME)
+VALUES ('ANDREA');
+
+SELECT* FROM demo;
+
+--duda ¿contiene?--
+SELECT* FROM demo
+WHERE HINT = '1';
+
+SELECT* FROM demo;
+
+/*Insertando y ordenando*/
+INSERT INTO demo (NAME, HINT)
+values ('CATALINA', 'PISTA 3');
+
+INSERT INTO demo (NAME, HINT)
+values ('ROCIO', 'PISTA 4');
+
+SELECT* FROM demo
+order BY id DESC limit 2;
+
+SELECT* FROM demo;
+
+/*Ejercicio: Cambiando valores*/
+UPDATE demo SET
+	HINT='Aprendi a cambiar valores'
+    WHERE id = 7;
+
+--- ¿Por que se cambia el orden de id?---
+SELECT* FROM demo;
+
+UPDATE demo SET
+	hint='Cambio masivo'
+    WHERE ID<5;
+    
+SELECT*FROM demo
+ORDER BY id ASC;
+
+/*Eliminando registros*/
+
+DELETE FROM demo
+	WHERE id BETWEEN 9 AND 10;
+ 
+SELECT*FROM demo
+ORDER BY id ASC;
+
+/*Creando una tabla nueva*/
+
+CREATE TABLE alumnos( 
+nombre varchar,
+nota1 integer,
+nota2 integer,
+nota3 integer 
+);
+
+/*Insertando datos en la tabla alumnos*/
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Elmira', 10, 1, 6);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Izak', 1, 6, 5);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Claudette', 5, 1, 3);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Noreen', 1, 6, 4);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Natalina', 8, 5, 3);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Jacky', 5, 2, 6);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Jilly', 6, 1, 2);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Robbie', 4, 8, 5);
+
+SELECT* fROM alumnos;
+
+/*Borrando una tabla*/
+--Drop TABLE alumnos;
+
+/*Ejercicio: Manipulando datos*/
+Drop Table alumnos;
+
+CREATE TABLE alumnos( 
+nombre varchar,
+nota1 integer,
+nota2 integer,
+nota3 integer 
+);
+
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Elmira', 10, 1, 6);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Izak', 1, 6, 5);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Claudette', 5, 1, 3);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Noreen', 1, 6, 4);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Natalina', 8, 5, 3);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Jacky', 5, 2, 6);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Jilly', 6, 1, 2);
+insert into alumnos (Nombre, Nota1, Nota2, Nota3) values ('Robbie', 4, 8, 5);
+
+Select* From alumnos;
+
+INSERT INTO alumnos (nombre, nota1, nota2, nota3) values ('Claudia', 10, 10, 10);
+SELECT* From alumnos;
