@@ -1,0 +1,97 @@
+/*Operaciones basicas de manipulacion de datos (CRUD)*/
+	INSERT: C (Crear)
+	SELECT: R (Leer)
+	UPDATE: U (Actualizar)
+	DELETE: D (Borrar)
+
+/*Sentencia INSERT = Insertar datos*/
+
+--Caso 1: Insertando datos a columnas
+	INSERT INTO nombre_tabla (column1,column2,column2,...)
+	VALUES (value1, value2, value3,...);
+
+--Caso 2: Insertando datos a todas las columnas
+	INSERT INTO nombre_tabla
+	VALUES (value1, value2, value3,...);
+
+--Caso 3: Insertar datos a columnas especificas
+	INSERT INTO nombre_tabla (column1, column2)
+	VALUES	(value1, value2);
+
+--Nota: Existen campos de incremento automatico. Ej = ID.
+
+/*Sentencia UPTADATE = Actualizar datos*/
+
+--Caso 1: Actualizando un registro
+	UPDATE nombre_tabla 
+	SET column1= value1
+	WHERE condition;
+
+--Caso 2: Actualizando registros especificando varias columnas
+	UPDATE nombre_tabla
+	SET column1= value1, column2= value2, ...
+	WHERE condition;
+
+--Caso 3: Actualizando varios registros con datos en comun
+	UPDATE nombre_tabla
+	SET column1= value1
+	WHERE column2=value2;
+
+--Caso 4: Actualizando varios registros de manera masiva
+	UPDATE nombre_tabla
+	SET column= value
+	WHERE column {</>/=/!=} value;
+
+--Nota: *WHERE especifica que registros deben actualizarse.
+	*No especificar WHERE actualizara todos los registros de la tabla.
+
+/*Sentencia DELETE = Borrar datos*/
+
+--Caso 1: 
+	DELETE FROM nombre_tabla
+	WHERE column
+	condition;
+
+--Caso 2: Eliminar todos los registros (sin eliminar la tabla)
+	DELETE FROM nombre_tabla;
+
+--Bonus: SENTENCIA TRUNCATE TABLE
+	TRUNCATE TABLE nombre_tabla;
+
+	
+-Nota: *WHERE especifica que registros deben borrarse.
+       *No especificar WHERE borrara todos los registros de la tabla.
+
+/*Sentencia SELECT = Consultar datos*/
+
+--Caso 1: Consultar todos los datos de una tabla 
+	SELECT * FROM nombre_tabla;
+
+--Caso 2: Consultar datos de una columna o columnas
+	SELECT column1, column2, ... FROM nombre_tabla;
+
+--Caso 3: Consultar datos con una condicion
+	SELECT {*/column} FROM nombre_tabla
+	WHERE condition;
+
+--Caso 4: Consultar datos y ordenar de manera ascendete o descendente
+	SELECT {*/column} FROM nombre_tabla
+	ORDER BY column {ASC/DESC};
+
+--Caso 5: Consultar datos y limitar resultados
+	SELECT {*/column} FROM nombre_tabla
+	LIMIT n;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
