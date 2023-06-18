@@ -1,0 +1,182 @@
+/*Operaciones basicas de manipulacion de datos (CRUD)*/
+
+	INSERT: C (Crear)
+	SELECT: R (Leer)
+	UPDATE: U (Actualizar)
+	DELETE: D (Borrar)
+
+/*Sentencia INSERT = Insertar datos*/
+
+--Caso 1: Insertando datos a columnas
+
+	INSERT INTO nombre_tabla (column1,column2,column2,...)
+	VALUES (value1, value2, value3,...);
+
+--Caso 2: Insertando datos a todas las columnas
+
+	INSERT INTO nombre_tabla
+	VALUES (value1, value2, value3,...);
+
+--Caso 3: Insertar datos a columnas especificas
+
+	INSERT INTO nombre_tabla (column1, column2)
+	VALUES	(value1, value2);
+
+--Nota: Existen campos de incremento automatico. Ej = ID.
+
+/*Sentencia UPTADATE = Actualizar datos*/
+
+--Caso 1: Actualizando un registro
+
+	UPDATE nombre_tabla 
+	SET column1= value1
+	WHERE condition;
+
+--Caso 2: Actualizando registros especificando varias columnas
+
+	UPDATE nombre_tabla
+	SET column1= value1, column2= value2, ...
+	WHERE condition;
+
+--Caso 3: Actualizando varios registros con datos en comun
+
+	UPDATE nombre_tabla
+	SET column1= value1
+	WHERE column2=value2;
+
+--Caso 4: Actualizando varios registros de manera masiva
+
+	UPDATE nombre_tabla
+	SET column= value
+	WHERE column {</>/=/!=} value;
+
+--Nota: *WHERE especifica que registros deben actualizarse.
+	*No especificar WHERE actualizara todos los registros de la tabla.
+
+/*Sentencia DELETE = Borrar datos*/
+
+--Caso 1: Eliminar registros con condicion WHERE	
+
+	DELETE FROM nombre_tabla
+	WHERE column
+	condition;
+
+--Caso 2: Eliminar todos los registros (sin eliminar la tabla)
+
+	DELETE FROM nombre_tabla;
+
+--Bonus: SENTENCIA TRUNCATE TABLE
+
+	TRUNCATE TABLE nombre_tabla;
+
+	
+-Nota: *WHERE especifica que registros deben borrarse.
+       *No especificar WHERE borrara todos los registros de la tabla.
+
+/*Sentencia SELECT = Consultar datos*/
+
+--Caso 1: Consultar todos los datos de una tabla 
+
+	SELECT * FROM nombre_tabla;
+
+--Caso 2: Consultar datos de una columna o columnas
+
+	SELECT column1, column2, ... 
+	FROM nombre_tabla;
+
+--Caso 3: Consultar datos con una condicion
+
+	SELECT {*/column} 
+	FROM nombre_tabla
+	WHERE condition;
+
+--Caso 4: Consultar datos y ordenar de manera ascendente o descendente
+
+	SELECT {*/column} 
+	FROM nombre_tabla
+	ORDER BY column {ASC/DESC};
+
+--Nota: Se puede ordenar por multiples campos separando por coma.
+
+--Caso 5: Consultar datos y limitar resultados
+
+	SELECT {*/column} 
+	FROM nombre_tabla
+	LIMIT n;
+
+--Caso 5: Consultar datos con operaciones sobre campos
+
+	SELECT column1 + column2		
+	FROM nombre_tabla;
+
+--Caso 6: Consultar datos renombrando campos 
+
+	SELECT column1 AS nuevo_nombre2, 
+	column2 AS nuevo_nombre2	
+	FROM nombre_tabla;
+
+	or
+
+	SELECT column1 nuevo_nombre2, 
+	column2 nuevo_nombre2	
+	FROM nombre_tabla;
+
+--Nota: AS es optativo.
+
+--Caso 7: Consultar datos filtrando resultados
+
+	SELECT* FROM nombre_tabla
+	WHERE column= value;
+
+--Nota: Para filtrar resultados se puede usar condiciones como AND y OR.
+
+--Caso 8: Consultar datos filtrando según la posición de caracteres
+
+	SELECT * FROM nombre_tabla
+     	WHERE column LIKE 'al_inicio %' 
+
+	SELECT * FROM nombre_tabla
+     	WHERE column LIKE '% al_medio_o_en_algun_lugar%'
+
+	SELECT * FROM nombre_tabla
+     	WHERE column LIKE '% al_final'
+
+--Caso 9: Consultar datos entre valores con WHERE
+
+	SELECT* FROM nombre_tabla
+ 	WHERE column IN (value1,value2);
+	
+	or
+
+	SELECT* FROM nombre_tabla
+	WHERE column >= value1 AND colum <= value2;
+
+--Caso 10: Consultar datos con excepcion de valores
+	
+	SELECT* FROM nombre_tabla
+	WHERE NOT column = value;
+	
+--Caso 11: Consultar datos {+,-,* o /} columnas
+
+	SELECT (column1 {+,-,* o /} column2) 
+	AS nuevo_nombre_columna 
+	FROM nombre_tabla;
+
+	or
+
+	SELECT (column1 {+,-,* o /} column2) 
+	nuevo_nombre_columna 
+	FROM nombre_tabla;
+
+
+
+
+
+
+
+
+
+
+
+
+
