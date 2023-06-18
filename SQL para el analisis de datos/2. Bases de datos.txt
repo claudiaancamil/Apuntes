@@ -1,0 +1,49 @@
+/*Crear base de datos*/
+
+	CREATE DATABASE	nombre_ddbb;
+
+/*Eliminar base de datos*/
+
+	DROP DATABASE nombre_ddbb;
+
+/*Listar las bases de datos*/
+
+	/l
+
+/*Conectarse a una base de datos*/
+
+	/c nombre_ddbb;
+
+/*Crear tabla en una base de datos*/
+		
+	CREATE TABLE nombre_tabla(
+		column1 tipo_de_dato,
+		column2 tipo_de_dato,
+		...,
+	);
+
+/*Agregar una columna a una tabla*/
+
+	ALTER TABLE nombre_tabla
+	ADD new_column tipo_de_dato;
+
+/*Eliminar una columna a una tabla*/
+
+	ALTER TABLE nombre_tabla
+	DROP column;
+
+*/Borrar tabla de una base de datos*/
+
+	DROP TABLE nombre_tabla;
+
+*/Listar todas las tablas*/
+	
+	/dt
+
+*/Describir una tabla*/
+
+	/d nombre_tabla
+
+
+
+
