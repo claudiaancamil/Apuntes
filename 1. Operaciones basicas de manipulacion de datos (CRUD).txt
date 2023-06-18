@@ -155,6 +155,17 @@
 	SELECT* FROM nombre_tabla
 	WHERE NOT column = value;
 	
+--Caso 11: Consultar datos sumando columnas
+
+	SELECT (column1 + column2) 
+	AS nuevo_nombre_columna 
+	FROM nombre_tabla;
+
+	or
+
+	SELECT (column1 + column2) 
+	nuevo_nombre_columna 
+	FROM nombre_tabla;
 
 
 
