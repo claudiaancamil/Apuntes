@@ -1,4 +1,5 @@
 /*Operaciones basicas de manipulacion de datos (CRUD)*/
+
 	INSERT: C (Crear)
 	SELECT: R (Leer)
 	UPDATE: U (Actualizar)
@@ -155,15 +156,15 @@
 	SELECT* FROM nombre_tabla
 	WHERE NOT column = value;
 	
---Caso 11: Consultar datos sumando columnas
+--Caso 11: Consultar datos {+,-,* o /} columnas
 
-	SELECT (column1 + column2) 
+	SELECT (column1 {+,-,* o /} column2) 
 	AS nuevo_nombre_columna 
 	FROM nombre_tabla;
 
 	or
 
-	SELECT (column1 + column2) 
+	SELECT (column1 {+,-,* o /} column2) 
 	nuevo_nombre_columna 
 	FROM nombre_tabla;
 
