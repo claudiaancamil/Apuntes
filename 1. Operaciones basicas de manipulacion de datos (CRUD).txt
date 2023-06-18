@@ -140,6 +140,17 @@
 	SELECT * FROM nombre_tabla
      	WHERE column LIKE '% al_final'
 
+--Caso 9: Consultar datos entre medio con WHERE
+
+	SELECT* FROM nombre_tabla
+ 	WHERE column IN (value1,value2);
+	
+	or
+
+	SELECT* FROM nombre_tabla
+	WHERE column >= value1 AND colum <= value2;
+	
+	
 
 
 
