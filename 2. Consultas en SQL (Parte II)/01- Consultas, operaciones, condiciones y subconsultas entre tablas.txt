@@ -1,0 +1,108 @@
+
+/* Contar la cantidad de registros*/
+	
+Caso 1: Contar la cantidad de registros sin WHERE
+	
+	SELECT COUNT (*) FROM nombre_tabla;
+
+Caso 2: Contar la cantidad de registros con WHERE	
+
+	SELECT COUNT (*) FROM nombre_tabla
+	WHERE condition;
+
+Caso 3: Listar o  mostrar los registros de una tabla sin repeticiones
+
+	SELECT DISTINCT	(column) 	
+	FROM nombre_tabla;
+
+Caso 4: Contar la cantidad de registros de una tabla sin repeticiones
+
+	SELECT COUNT(DISTINCT(column)) 
+	FROM nombre_tabla;
+
+/* Registros agrupados*/
+
+Caso 1: Contar la cantidad de veces que se repite cada registro en una columna
+	
+	SELECT column, COUNT (*) 	
+	FROM nombre_tabla	
+	GROUP BY column;
+
+--Nota: No seleccionar una columna luego de SELECT arrojara solo el conteo de
+	registros sin identificar el valor de este conteo.
+
+	SELECT count(*) FROM monedas 	
+	GROUP BY column;
+
+/*Suma y promedio de datos*/
+
+Suma: 		SELECT column1, SUM (column2) 	
+		FROM nombre_tabla 
+		GROUP BY column1;
+
+Promedio:	SELECT column1, AVG (column2)
+		FROM nombre_tabla	
+		GROUP BY column1;
+
+/* Filtro por condiciones */
+
+Caso 1: Consultar datos con WHERE para registros que cumplan una condicion
+
+	SELECT column1, SUM (column2) 
+	FROM nombre_tabla WHERE condition
+	Group BY column1;
+
+Caso 2: Consultar datos con HAVING para registros agrupados que cumplan 
+	una condicion
+
+	SELECT column1, SUM (column2) 
+	FROM nombre_tabla 
+	Group BY column1
+	HAVING SUM (column2) condition;
+
+/* Subconsultas */
+
+Caso 1: Seleccionar datos en base al resutado de otra consulta
+
+	SELECT * FROM nombre_tabla 
+	WHERE column condition (SELECT {AVG/SUM} (column) 	
+	FROM nombre_tabla);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
