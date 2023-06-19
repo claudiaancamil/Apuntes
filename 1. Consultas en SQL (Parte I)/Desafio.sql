@@ -18,9 +18,9 @@ CREATE DATABASE desafio_nombre_apellido_111;
 /*Crea una tabla llamada clientes, con una columna llamada email de tipo varchar(50), una columna llamada nombre de tipo varchar sin limitación, una columna llamada 
 teléfono de tipo varchar(16), un campo llamado empresa de tipo varchar(50) y una columna de tipo smallint, para indicar la prioridad del cliente. Ahí se debe ingresar un valor entre 1 y 10, donde 10 es más prioritario. */
 
-CREATE TABLE clientes (email varchar(50),nombres varchar,
-telefono varchar (16), empresa varchar (50),
-prioridad smallint);
+CREATE TABLE clientes (email varchar(50),
+nombres varchar,telefono varchar (16), 
+empresa varchar (50), prioridad smallint);
 
 /*Ingresa    5    clientes    distintos    con    distintas    prioridades,    el   resto   de   los   valores   los 
 puedes inventar*/
