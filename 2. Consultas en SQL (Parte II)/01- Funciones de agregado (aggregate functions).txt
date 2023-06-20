@@ -10,29 +10,21 @@ Caso 2: Contar la cantidad de registros con WHERE
 	SELECT COUNT (*) FROM nombre_tabla
 	WHERE condition;
 
-Caso 3: Listar o  mostrar los registros de una tabla sin repeticiones
+Caso 3: Consultar registros con WHERE para registros que cumplan una condicion
+
+	SELECT column1, {SUM/AVG/MIN/MAX} (column2) 
+	FROM nombre_tabla WHERE condition
+	Group BY column1;
+
+Caso 4: Listar o  mostrar los registros de una tabla sin repeticiones
 
 	SELECT DISTINCT	(column) 	
 	FROM nombre_tabla;
 
-Caso 4: Contar la cantidad de registros de una tabla sin repeticiones
+Caso 5: Contar la cantidad de registros de una tabla sin repeticiones
 
 	SELECT COUNT(DISTINCT(column)) 
 	FROM nombre_tabla;
-
-/* Registros agrupados*/
-
-Caso 1: Contar la cantidad de veces que se repite cada registro en una columna
-	
-	SELECT column, COUNT (*) 	
-	FROM nombre_tabla	
-	GROUP BY column;
-
---Nota: No seleccionar una columna luego de SELECT arrojara solo el conteo de
-	registros sin identificar el valor de este conteo.
-
-	SELECT count(*) FROM monedas 	
-	GROUP BY column;
 
 /*Suma y promedio de datos*/
 
@@ -44,6 +36,12 @@ Promedio:	SELECT column1, AVG (column2)
 		FROM nombre_tabla	
 		GROUP BY column1;
 
+Bonus: Consultar la suma y el promedio simultaneamente
+
+	SELECT column_a_agrupar, SUM (column_2), 
+	AVG (column2) from nombre_tabla 
+	GROUP BY column_a_agrupar;
+
 /*Minimo y maximo de datos*/
 
 Minimo: 	SELECT MIN (column) 	
@@ -52,22 +50,92 @@ Minimo: 	SELECT MIN (column)
 Maximo:		SELECT MAX (column
 		FROM nombre_tabla;
 
+Bonus: Mostrar el minimo y maximo simultaneamente
 
-/* Filtro por condiciones */
+	SELECT column_a_agrupar, MIN (column_2), 
+	MAX (column2) from nombre_tabla 
+	GROUP BY column_a_agrupar;
 
-Caso 1: Consultar datos con WHERE para registros que cumplan una condicion
+/* Registros agrupados con GROUP BY*/
 
-	SELECT column1, SUM (column2) 
-	FROM nombre_tabla WHERE condition
-	Group BY column1;
+Caso 1: Contar la cantidad de veces que se repite cada registro agrupados
+	por columnas con GROUP BY
+	
+	SELECT column1, COUNT (*) 	
+	FROM nombre_tabla	
+	GROUP BY column1;
 
-Caso 2: Consultar datos con HAVING para registros agrupados que cumplan 
-	una condicion
+	or 
 
-	SELECT column1, SUM (column2) 
+	SELECT column1, COUNT (column1) 
+	FROM nombre_tabla 
+	GROUP by column1;
+
+--Nota: No seleccionar una columna luego de SELECT arrojara solo el conteo de
+	registros sin identificar el valor de este conteo.
+
+	SELECT COUNT(*) FROM nombre_tabla 	
+	GROUP BY column;
+
+Caso 2: Consultar la suma total de registros repetidos o no agrupando
+ 	con GROUP BY
+
+	SELECT column1_a_agrupar SUM (columna2) 	
+	FROM nombre_tabla
+	GROUP by column1_a_agrupar;
+
+Caso 3: Consultar el promedio de registros repetidos o no agrupando
+ 	con GROUP BY
+
+	SELECT column1_a_agrupar, AVG (columna2) 	
+	FROM nombre_tabla
+	GROUP by column1_a_agrupar;
+
+Caso 4: Consultar el registro minimo de registros repetidos o no agrupando
+ 	con GROUP BY
+
+	SELECT column1_a_agrupar, MIN (columna2) 	
+	FROM nombre_tabla
+	GROUP by column1_a_agrupar;
+
+Caso 5: Consultar el registro maximo de registros repetidos o no agrupando
+ 	con GROUP BY
+
+	SELECT column1_a_agrupar, MAX (columna2) 	
+	FROM nombre_tabla
+	GROUP by column1_a_agrupar;
+
+/* Filtro por condiciones con HAVING*/
+
+Caso 1: Consultar registros operando una columna diferente para registros 
+	agrupados que cumplan una condicion con HAVING
+
+	SELECT column1, {COUNT/SUM/AVG/MIN/MAX} (column2) 
 	FROM nombre_tabla 
 	Group BY column1
-	HAVING SUM (column2) condition;
+	HAVING {COUNT/SUM/AVG/MIN/MAX} (column2) condition;
+
+	or
+
+	SELECT column1, {COUNT/SUM/AVG/MIN/MAX} (column2) 
+	FROM nombre_tabla
+	GROUP BY column1 HAVING 
+	{COUNT/SUM/AVG/MIN/MAX} (column1) condition;	
+
+	or 
+
+	SELECT column1, {COUNT/SUM/AVG/MIN/MAX}(column1,) 
+	FROM ventas 
+	GROUP BY column1, HAVING 
+	{COUNT/SUM/AVG/MIN/MAX} (column2) condition;
+
+Caso 2: Consultar registros operando la misma columna para registros 
+	agrupados que cumplan una condicion
+
+	SELECT column1, {COUNT/SUM/AVG/MIN/MAX}(column1,) 
+	FROM nombre_tabla
+	GROUP BY column1, HAVING 
+	{COUNT/SUM/AVG/MIN/MAX} (column1) condition;
 
 /* Subconsultas */
 
@@ -77,7 +145,11 @@ Caso 1: Seleccionar datos en base al resutado de otra consulta
 	WHERE column condition (SELECT {AVG/SUM} (column) 	
 	FROM nombre_tabla);
 
-
+Observacion: Having se utiliza cuando la condición se aplica sobre una 
+función de agregado.   Por ejemplo, si queremos filtrar por un correo,
+o por montos inferiores a cierto valor, entonces ocuparemos where; si 
+queremos filtrar por la suma o conteo de los valores deberemos ocupar 
+having.
 
 
 
