@@ -95,7 +95,7 @@
 		FULL JOIN tabla2 t2 
 		ON t1.column2 = t2.column2;
 
---CROS JOIN <-- Los resultados podrían no tener sentido y no se hacen sobre una clave.
+--CROSS JOIN <-- Los resultados podrían no tener sentido y no se hacen sobre una clave.
 
 		SELECT *
 		FROM tabla1
