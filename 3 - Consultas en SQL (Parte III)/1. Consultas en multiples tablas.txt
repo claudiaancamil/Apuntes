@@ -1,0 +1,120 @@
+/*Consultas en multiples tablas*/
+
+--Caso 1: Consultas datos de multiples tablas sin WHERE:
+   	  Todos los datos de todas las tablas se cruzan.
+
+		SELECT * FROM table1, table2,...;
+
+--Nota: Es un producto cartesiano (todos los registros de una contra todos 
+	los registros de otra)
+
+--Caso 2: Consultar datos de multiples tablas con WHERE.
+	  Utilizando WHERE se ﬁltran los datos que no corresponden.
+
+		SELECT * FROM table, table2,...
+		WHERE condition;
+
+--Caso 3: Consultar los datos de todas las columnas de
+	  multiples tablas;
+
+		SELECT nombre_tabla1.*, nombre_tabla2.*,...
+		FROM tabla1, tabla2;
+
+--Caso 4: Consultar los datos de todas las columnas de
+	  multiples tablas usando WHERE;
+
+		SELECT nombre_tabla1.*, nombre_tabla2.*,...
+		FROM tabla1, tabla2
+		WHERE condition;
+
+--Caso 5: Consultar los datos de columnas especificas en
+	  mutiples tablas usando WHERE;
+	
+		SELECT a.column, b.column, c.column
+		FROM tabla_a, tabla_b, tabla_c
+		WHERE condition;
+
+		or
+
+		SELECT tabla_a.campo,tabla_b.campo, tabla_c.campo
+		FROM tabla_a, tabla_b, tabla_c
+		WHERE condition;
+
+--Nota:   La condicion en WHERE debe debe unir columnas en comun
+	  en ambas tablas, especificando el alias de tabla	
+	  a cada columna.
+
+/*Cruce de tabla con JOIN*/
+
+--Sintaxis: 	
+		SELECT * FROM tabla1, 
+		TIPO_DE_JOIN tabla2 
+		ON tabla1.campo = tabla2.campo
+
+//Tipos de JOIN:  INNER JOIN
+		LEFT JOIN
+		FULL JOIN 
+		CROSS JOIN
+
+--INNER JOIN <- Selecciona las ﬁlas en comun en ambas columnas. 
+		
+		SELECT * FROM tabla1 INNER JOIN tabla2
+		ON t1.columna_en_comun = t2.columna_en_comun;
+
+		*Para omitir columnas repetidas:
+
+		SELECT t1.column1, t2.column2, ...
+		FROM tabla1 t1
+		INNER JOIN tabla2 t2 
+		ON t1.column2 = t2.column2;
+
+--LEFT JOIN <-- Selecciona todos los datos de la primera tabla y solo los que tenga
+		en comun con la segunda tabla. Todos los resultados de la tabla1
+		y aquellos que cumplen con la condición en la tabla2 son uniﬁcados. 
+		Los que no cumplen quedan como NULL.
+		
+		SELECT* FROM tabla1 LEFT JOIN tabla2
+		ON t1.columna_en_comun = t2.columna_en_comun;
+
+		*Para omitir columnas repetidas:
+
+		SELECT t1.column1, t2.column2, ...
+		FROM tabla1 t1
+		{LEFT JOIN/RIGHT JOIN} tabla2 t2 
+		ON t1.column2 = t2.column2;
+
+--FULL JOIN <-- Une todos los registros de ambas tablas, sin excepcion.
+
+		SELECT* FROM tabla1 FULL JOIN tabla2
+		ON t1.columna_en_comun = t2.columna_en_comun;
+				
+		*Para omitir columnas repetidas:
+
+		SELECT t1.column1, t2.column2, ...
+		FROM tabla1 t1
+		FULL JOIN tabla2 t2 
+		ON t1.column2 = t2.column2;
+
+--CROS JOIN <-- Los resultados podrían no tener sentido y no se hacen sobre una clave.
+
+		SELECT *
+		FROM tabla1
+		CROSS JOIN tabla2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
